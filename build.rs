@@ -55,14 +55,15 @@ impl TreeSitterParser {
         if cfg!(target_env = "msvc") {
             build.flag("/utf-8");
         }
-        build.include(&dir)
-            .warnings(false) // ignore unused parameter warnings
-            .static_flag(true); // Force static linking
+        build.include(&dir).warnings(false);
 
         // Add unique prefix for symbols to avoid conflicts
         if self.name == "tree-sitter-angular" || self.name == "tree-sitter-vue" {
-            build.flag(&format!("-DTAG_TYPES_BY_TAG_NAME={}_{}", 
-                self.name.replace("-", "_"), "TAG_TYPES_BY_TAG_NAME"));
+            build.flag(format!(
+                "-DTAG_TYPES_BY_TAG_NAME={}_{}",
+                self.name.replace("-", "_"),
+                "TAG_TYPES_BY_TAG_NAME"
+            ));
         }
 
         for file in c_files {
