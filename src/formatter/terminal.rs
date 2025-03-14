@@ -47,7 +47,8 @@ impl Formatter for Terminal<'_> {
                     let hex: &str = self
                         .options
                         .theme
-                        .get_style(scope)
+                        .as_ref()
+                        .and_then(|theme| theme.get_style(scope))
                         .and_then(|style| style.fg.as_deref())
                         // not completely blank so it's still visible in light terminals
                         .unwrap_or("#eeeeee")
