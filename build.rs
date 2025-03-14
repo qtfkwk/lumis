@@ -52,9 +52,11 @@ impl TreeSitterParser {
         }
 
         let mut build = cc::Build::new();
-        if cfg!(target_env = "msvc") {
-            build.flag("/utf-8");
-        }
+
+        // if cfg!(target_env = "msvc") {
+        //     build.flag("/utf-8");
+        // }
+
         build.include(&dir).warnings(false);
 
         // Add unique prefix for symbols to avoid conflicts
