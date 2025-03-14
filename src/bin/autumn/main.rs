@@ -229,7 +229,7 @@ fn highlight(path: &str, formatter: Option<Formatter>, theme: Option<String>) ->
                 autumnus::Options {
                     lang_or_file: Some(path),
                     formatter: FormatterOption::default(),
-                    theme,
+                    theme: Some(theme),
                 },
             );
 
@@ -242,7 +242,7 @@ fn highlight(path: &str, formatter: Option<Formatter>, theme: Option<String>) ->
                 autumnus::Options {
                     lang_or_file: Some(path),
                     formatter: FormatterOption::HtmlLinked { pre_class: None },
-                    theme,
+                    theme: Some(theme),
                 },
             );
 
@@ -255,7 +255,7 @@ fn highlight(path: &str, formatter: Option<Formatter>, theme: Option<String>) ->
                 autumnus::Options {
                     lang_or_file: Some(path),
                     formatter: FormatterOption::Terminal { italic: false },
-                    theme,
+                    theme: Some(theme),
                 },
             );
 
@@ -366,7 +366,7 @@ fn highlight_source(
     theme: Option<String>,
 ) -> Result<()> {
     let theme = theme.unwrap_or("catppuccin_frappe".to_string());
-    let theme = autumnus::themes::get(&theme).expect("Theme not found");
+    let theme = autumnus::themes::get(&theme).ok();
 
     match formatter.unwrap_or_default() {
         Formatter::HtmlInline => {

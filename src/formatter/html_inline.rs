@@ -36,11 +36,12 @@ impl Formatter for HtmlInline<'_> {
             writer,
             "<pre class=\"{}\"{}><code class=\"language-{}\" translate=\"no\" tabindex=\"0\">",
             class,
-            if let Some(pre_style) = self.options.theme.pre_style(" ") {
-                format!(" style=\"{}\"", pre_style)
-            } else {
-                String::new()
-            },
+            &self.options
+                .theme
+                .as_ref()
+                .and_then(|theme| theme.pre_style(" "))
+                .map(|pre_style| format!(" style=\"{}\"", pre_style))
+                .unwrap_or_default(),
             self.lang.id_name()
         );
     }
@@ -85,14 +86,16 @@ impl Formatter for HtmlInline<'_> {
                     output.extend(b"\"");
                 }
 
-                if let Some(style) = self.options.theme.get_style(scope) {
-                    if include_highlights {
-                        output.extend(b" ");
-                    }
+                if let Some(theme) = &self.options.theme {
+                    if let Some(style) = theme.get_style(scope) {
+                        if include_highlights {
+                            output.extend(b" ");
+                        }
 
-                    output.extend(b"style=\"");
-                    output.extend(style.css(italic, " ").as_bytes());
-                    output.extend(b"\"");
+                        output.extend(b"style=\"");
+                        output.extend(style.css(italic, " ").as_bytes());
+                        output.extend(b"\"");
+                    }
                 }
             })
             .expect("failed to render highlight events");
@@ -163,7 +166,7 @@ mod tests {
             italic: false,
             include_highlights: false,
         };
-        formatter.options.theme = themes::get("github_light").expect("Theme not found");
+        formatter.options.theme = themes::get("github_light").ok();
         let mut buffer = String::new();
         formatter.start(&mut buffer, "");
 

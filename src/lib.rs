@@ -30,7 +30,7 @@
 //!     code,
 //!     Options {
 //!         lang_or_file: Some("sql"),
-//!         theme: themes::get("dracula").expect("Theme not found"),
+//!         theme: themes::get("dracula").ok(),
 //!         ..Options::default()
 //!     }
 //! );
@@ -275,11 +275,8 @@ use crate::formatter::HtmlInline;
 use crate::formatter::HtmlLinked;
 use crate::languages::Language;
 use formatter::Terminal;
-use std::sync::LazyLock;
 use themes::Theme;
 use tree_sitter_highlight::Highlighter;
-
-static DEFAULT_THEME: LazyLock<Theme> = LazyLock::new(Theme::default);
 
 /// The type of formatter to use for syntax highlighting.
 #[derive(Debug, Clone)]
@@ -356,12 +353,12 @@ pub struct Options<'a> {
     ///     code,
     ///     Options {
     ///         lang_or_file: Some("sql"),
-    ///         theme: themes::get("dracula").expect("Theme not found"),
+    ///         theme: themes::get("dracula").ok(),
     ///         ..Options::default()
     ///     }
     /// );
     /// ```
-    pub theme: &'a Theme,
+    pub theme: Option<&'a Theme>,
 
     /// The type of formatter to use for output.
     ///
@@ -387,7 +384,7 @@ impl Default for Options<'_> {
     fn default() -> Self {
         Self {
             lang_or_file: None,
-            theme: &DEFAULT_THEME,
+            theme: None,
             formatter: FormatterOption::HtmlInline {
                 pre_class: None,
                 italic: false,
@@ -593,7 +590,7 @@ end
             code,
             Options {
                 lang_or_file: Some("elixir"),
-                theme: themes::get("catppuccin_frappe").expect("Theme not found"),
+                theme: themes::get("catppuccin_frappe").ok(),
                 ..Options::default()
             },
         );
@@ -617,7 +614,7 @@ end
             code,
             Options {
                 lang_or_file: Some("elixir"),
-                theme: themes::get("catppuccin_frappe").expect("Theme not found"),
+                theme: themes::get("catppuccin_frappe").ok(),
                 formatter: FormatterOption::HtmlInline {
                     pre_class: None,
                     italic: false,
@@ -638,7 +635,7 @@ end
             "{:ok, char: '{'}",
             Options {
                 lang_or_file: Some("elixir"),
-                theme: themes::get("catppuccin_frappe").expect("Theme not found"),
+                theme: themes::get("catppuccin_frappe").ok(),
                 ..Options::default()
             },
         );
@@ -675,7 +672,7 @@ end
             Options {
                 lang_or_file: Some("elixir"),
                 formatter: FormatterOption::HtmlLinked { pre_class: None },
-                theme: themes::get("catppuccin_frappe").expect("Theme not found"),
+                theme: themes::get("catppuccin_frappe").ok(),
             },
         );
 
@@ -692,7 +689,7 @@ end
             Options {
                 lang_or_file: Some("elixir"),
                 formatter: FormatterOption::HtmlLinked { pre_class: None },
-                theme: themes::get("catppuccin_frappe").expect("Theme not found"),
+                theme: themes::get("catppuccin_frappe").ok(),
                 ..Options::default()
             },
         );
@@ -761,7 +758,7 @@ end
     fn test_highlight_terminal() {
         let options = Options {
             lang_or_file: Some("ruby"),
-            theme: themes::get("dracula").expect("Theme not found"),
+            theme: themes::get("dracula").ok(),
             formatter: FormatterOption::Terminal { italic: false },
         };
         let code = "puts 'Hello from Ruby!'";
