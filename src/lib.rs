@@ -279,6 +279,8 @@ use themes::Theme;
 use tree_sitter_highlight::Highlighter;
 
 /// The type of formatter to use for syntax highlighting.
+///
+/// Defaults to `HtmlInline` with no additional `pre_class`, no italics, and no highlight scope names.
 #[derive(Debug, Clone)]
 pub enum FormatterOption {
     /// HTML output with inline styles.
