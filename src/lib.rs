@@ -80,7 +80,7 @@
 //!     code,
 //!     Options {
 //!         lang_or_file: Some("ruby"),
-//!         formatter: FormatterOption::Terminal { italic: false },
+//!         formatter: FormatterOption::Terminal,
 //!         ..Options::default()
 //!     }
 //! );
@@ -270,23 +270,18 @@ pub mod formatter;
 pub mod languages;
 pub mod themes;
 
-use crate::formatter::Formatter;
-use crate::formatter::HtmlInline;
-use crate::formatter::HtmlLinked;
 use crate::languages::Language;
-use formatter::Terminal;
-use themes::Theme;
-use tree_sitter_highlight::Highlighter;
+use crate::themes::Theme;
 
 /// The type of formatter to use for syntax highlighting.
 ///
 /// Defaults to `HtmlInline` with no additional `pre_class`, no italics, and no highlight scope names.
 #[derive(Debug, Clone)]
-pub enum FormatterOption {
+pub enum FormatterOption<'a> {
     /// HTML output with inline styles.
     HtmlInline {
         /// Class to add to the `<pre>` tag.
-        pre_class: Option<String>,
+        pre_class: Option<&'a str>,
         /// Whether to use italics for highlighting.
         italic: bool,
         /// Whether to include the original highlight scope name in a `data` attribute.
@@ -303,16 +298,13 @@ pub enum FormatterOption {
     /// ```
     HtmlLinked {
         /// Class to add to the `<pre>` tag.
-        pre_class: Option<String>,
+        pre_class: Option<&'a str>,
     },
     /// Terminal output with ANSI colors.
-    Terminal {
-        /// Whether to use italics for highlighting.
-        italic: bool,
-    },
+    Terminal,
 }
 
-impl Default for FormatterOption {
+impl Default for FormatterOption<'_> {
     fn default() -> Self {
         Self::HtmlInline {
             pre_class: None,
@@ -374,12 +366,12 @@ pub struct Options<'a> {
     ///     code,
     ///     Options {
     ///         lang_or_file: Some("ruby"),
-    ///         formatter: FormatterOption::Terminal { italic: false },
+    ///         formatter: FormatterOption::Terminal,
     ///         ..Options::default()
     ///     }
     /// );
     /// ```
-    pub formatter: FormatterOption,
+    pub formatter: FormatterOption<'a>,
 }
 
 impl Default for Options<'_> {
@@ -462,7 +454,7 @@ impl Default for Options<'_> {
 ///     code,
 ///     Options {
 ///         lang_or_file: Some("rust"),
-///         formatter: FormatterOption::HtmlLinked { pre_class: Some("my-code-block".to_string()) },
+///         formatter: FormatterOption::HtmlLinked { pre_class: Some("my-code-block") },
 ///         ..Options::default()
 ///     }
 /// );
@@ -507,7 +499,7 @@ impl Default for Options<'_> {
 ///     code,
 ///     Options {
 ///         lang_or_file: Some("rust"),
-///         formatter: FormatterOption::Terminal { italic: false },
+///         formatter: FormatterOption::Terminal,
 ///         ..Options::default()
 ///     }
 /// );
@@ -522,38 +514,8 @@ impl Default for Options<'_> {
 pub fn highlight(source: &str, options: Options) -> String {
     let lang = Language::guess(options.lang_or_file.unwrap_or(""), source);
     let mut buffer = String::new();
-    let mut highlighter = Highlighter::new();
-    let events = highlighter
-        .highlight(lang.config(), source.as_bytes(), None, |injected| {
-            Some(Language::guess(injected, "").config())
-        })
-        .expect("failed to generate highlight events");
-
-    match options.formatter {
-        FormatterOption::HtmlInline {
-            pre_class: _,
-            italic: _,
-            include_highlights: _,
-        } => {
-            let formatter = HtmlInline::new(lang, options);
-            formatter.start(&mut buffer, source);
-            formatter.write(&mut buffer, source, events);
-            formatter.finish(&mut buffer, source);
-        }
-        FormatterOption::HtmlLinked { pre_class: _ } => {
-            let formatter = HtmlLinked::new(lang, options);
-            formatter.start(&mut buffer, source);
-            formatter.write(&mut buffer, source, events);
-            formatter.finish(&mut buffer, source);
-        }
-        FormatterOption::Terminal { italic: _ } => {
-            let formatter = Terminal::new(options);
-            formatter.start(&mut buffer, source);
-            formatter.write(&mut buffer, source, events);
-            formatter.finish(&mut buffer, source);
-        }
-    };
-
+    formatter::write_formatted(&mut buffer, source, lang, options.formatter, options.theme)
+        .expect("failed to write formatted code");
     buffer
 }
 
@@ -692,7 +654,6 @@ end
                 lang_or_file: Some("elixir"),
                 formatter: FormatterOption::HtmlLinked { pre_class: None },
                 theme: themes::get("catppuccin_frappe").ok(),
-                ..Options::default()
             },
         );
 
@@ -761,7 +722,7 @@ end
         let options = Options {
             lang_or_file: Some("ruby"),
             theme: themes::get("dracula").ok(),
-            formatter: FormatterOption::Terminal { italic: false },
+            formatter: FormatterOption::Terminal,
         };
         let code = "puts 'Hello from Ruby!'";
         let ansi = highlight(code, options);
