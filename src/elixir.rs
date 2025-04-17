@@ -4,7 +4,7 @@ use crate::{themes, FormatterOption};
 use rustler::{NifStruct, NifTaggedEnum};
 use std::collections::HashMap;
 
-#[derive(Debug, NifTaggedEnum)]
+#[derive(Debug, Default, NifTaggedEnum)]
 pub enum ExFormatterOption<'a> {
     HtmlInline {
         theme: Option<ThemeOrString<'a>>,
@@ -20,10 +20,16 @@ pub enum ExFormatterOption<'a> {
     },
 }
 
-#[derive(Debug, NifTaggedEnum)]
+#[derive(Debug, Default, NifTaggedEnum)]
 pub enum ThemeOrString<'a> {
     Theme(ExTheme),
     String(&'a str),
+}
+
+impl Default for ThemeOrString {
+    fn default() -> Self {
+        Self { String: "onedark" }
+    }
 }
 
 impl<'a> From<ExFormatterOption<'a>> for FormatterOption<'a> {
@@ -76,7 +82,7 @@ impl<'a> From<ExFormatterOption<'a>> for FormatterOption<'a> {
     }
 }
 
-#[derive(Debug, NifStruct)]
+#[derive(Debug, Default, NifStruct)]
 #[module = "Autumn.Theme"]
 pub struct ExTheme {
     pub name: String,
@@ -124,7 +130,7 @@ impl<'a> From<&'a themes::Theme> for ExTheme {
     }
 }
 
-#[derive(Debug, NifStruct)]
+#[derive(Debug, Default, NifStruct)]
 #[module = "Autumn.Theme.Style"]
 pub struct ExStyle {
     pub fg: Option<String>,
