@@ -193,4 +193,4 @@ gen-samples:
 dev-server:
     #!/usr/bin/env bash
     set -euo pipefail
-    (cd samples && python -m http.server)
+    (cd samples && npx http-server . -p 8000 --ext-fallback)
