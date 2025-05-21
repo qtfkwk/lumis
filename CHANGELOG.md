@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.2] - 2025-05-21
+
+### Improvements
+- Add neovim light and dark themes - @mhanberg
+- Update CSS files
+
 ## [0.3.1] - 2025-05-02
 
 ### Improvements
@@ -10,7 +16,7 @@
 ## [0.3.0] - 2025-04-18
 
 ### Added
-- Added `nix` language by @kivikakk
+- Added `nix` language - @kivikakk
 - Added `write_highlight` to write highlighted code into a Write
 - Added `elixir` module and feature flag to expose Rustler related code
 
