@@ -10,17 +10,13 @@ use strum::{EnumIter, IntoEnumIterator};
 use tree_sitter_highlight::HighlightConfiguration;
 
 extern "C" {
-    fn tree_sitter_hcl() -> *const ();
     fn tree_sitter_angular() -> *const ();
     fn tree_sitter_astro() -> *const ();
     fn tree_sitter_clojure() -> *const ();
-    fn tree_sitter_cmake() -> *const ();
-    fn tree_sitter_comment() -> *const ();
     fn tree_sitter_commonlisp() -> *const ();
     fn tree_sitter_csv() -> *const ();
     fn tree_sitter_dockerfile() -> *const ();
     fn tree_sitter_eex() -> *const ();
-    fn tree_sitter_elm() -> *const ();
     fn tree_sitter_glimmer() -> *const ();
     fn tree_sitter_graphql() -> *const ();
     fn tree_sitter_iex() -> *const ();
@@ -30,7 +26,6 @@ extern "C" {
     fn tree_sitter_llvm() -> *const ();
     fn tree_sitter_make() -> *const ();
     fn tree_sitter_perl() -> *const ();
-    fn tree_sitter_powershell() -> *const ();
     fn tree_sitter_scss() -> *const ();
     fn tree_sitter_surface() -> *const ();
     fn tree_sitter_vim() -> *const ();
@@ -889,10 +884,8 @@ static CLOJURE_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
 });
 
 static COMMENT_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
-    let language_fn = unsafe { tree_sitter_language::LanguageFn::from_raw(tree_sitter_comment) };
-
     let mut config = HighlightConfiguration::new(
-        tree_sitter::Language::new(language_fn),
+        tree_sitter::Language::new(tree_sitter_comment::LANGUAGE),
         "comment",
         COMMENT_HIGHLIGHTS,
         COMMENT_INJECTIONS,
@@ -919,10 +912,8 @@ static COMMONLISP_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
 });
 
 static CMAKE_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
-    let language_fn = unsafe { tree_sitter_language::LanguageFn::from_raw(tree_sitter_cmake) };
-
     let mut config = HighlightConfiguration::new(
-        tree_sitter::Language::new(language_fn),
+        tree_sitter::Language::new(tree_sitter_cmake::LANGUAGE),
         "cmake",
         CMAKE_HIGHLIGHTS,
         CMAKE_INJECTIONS,
@@ -1070,10 +1061,8 @@ static ELIXIR_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
 });
 
 static ELM_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
-    let language_fn = unsafe { tree_sitter_language::LanguageFn::from_raw(tree_sitter_elm) };
-
     let mut config = HighlightConfiguration::new(
-        tree_sitter::Language::new(language_fn),
+        tree_sitter::Language::new(tree_sitter_elm::LANGUAGE),
         "elm",
         ELM_HIGHLIGHTS,
         ELM_INJECTIONS,
@@ -1180,10 +1169,8 @@ static HASKELL_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
 });
 
 static HCL_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
-    let language_fn = unsafe { tree_sitter_language::LanguageFn::from_raw(tree_sitter_hcl) };
-
     let mut config = HighlightConfiguration::new(
-        tree_sitter::Language::new(language_fn),
+        tree_sitter::Language::new(tree_sitter_hcl::LANGUAGE),
         "hcl",
         HCL_HIGHLIGHTS,
         HCL_INJECTIONS,
@@ -1469,10 +1456,8 @@ static PHP_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
 });
 
 static POWERSHELL_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
-    let language_fn = unsafe { tree_sitter_language::LanguageFn::from_raw(tree_sitter_powershell) };
-
     let mut config = HighlightConfiguration::new(
-        tree_sitter::Language::new(language_fn),
+        tree_sitter::Language::new(tree_sitter_powershell::LANGUAGE),
         "poweshell",
         POWERSHELL_HIGHLIGHTS,
         POWERSHELL_INJECTIONS,
