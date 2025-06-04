@@ -3,8 +3,7 @@
 ## Unreleased
 
 ### Improvements
-- Updated parsers: angular, cmake, comment, hcl, liquid, llvm, perl, vim
-
+- Updated parsers: angular, c, cmake, comment, hcl, liquid, llvm, ocaml, perl, vim, yaml
 
 ## [0.3.2] - 2025-05-21
 
