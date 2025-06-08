@@ -98,7 +98,7 @@ impl Formatter for HtmlInline<'_> {
                 let scope = crate::constants::HIGHLIGHT_NAMES[highlight.0];
 
                 if self.include_highlights {
-                    output.extend(" data-highlight=\"".as_bytes());
+                    output.extend("data-highlight=\"".as_bytes());
                     output.extend(scope.as_bytes());
                     output.extend(b"\"");
                 }
