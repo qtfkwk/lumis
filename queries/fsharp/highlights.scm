@@ -200,7 +200,15 @@
   "#line" @keyword.directive)
 
 (attribute
-  target: (identifier)? @keyword
+  (_type) @attribute)
+
+; Attribute targets
+(attribute
+  [
+    "return"
+    "field"
+  ] @keyword
+  ":"
   (_type) @attribute)
 
 [
