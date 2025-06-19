@@ -3,6 +3,7 @@
 ## [0.4.0] - 2025-06-19
 
 ### Changed
+- **Breaking** Require Rust 1.86 or later
 - Update to Rust edition 2021
 - Update parsers: angular, c, cmake, comment, hcl, liquid, llvm, ocaml, perl, vim, vue, yaml
 - Update queries: cmake, elm, fsharp, html, latex, php, vue
