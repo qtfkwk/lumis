@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [0.4.0] - 2025-06-19
 
 ### Changed
 - Update to Rust edition 2021
