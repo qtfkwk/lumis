@@ -7,14 +7,29 @@
 - Add shared `HtmlElement` struct for configuring HTML wrapper elements
 - Add individual language feature flags (`lang-*`) for selective compilation to reduce build times
 - Add `all-languages` convenience feature flag to enable all language support
+- Add `highlight_lines` option to HTML formatters for highlighting specific lines
 - Add `highlight_lines` and `header` fields to Elixir bindings for HTML formatters
+- Add cursorline highlight support
+- Add builder pattern for formatter configuration
 - Add languages: assembly, dart
 - Add themes: horizon, horizon_dark, horizon_light, iceberg, molokai, moonlight, nordfox, papercolor_dark, papercolor_light, srcery, zenburn
+- Add query overwrite system for customizing syntax highlighting
 
 ### Improvements
 - Updated parsers: angular, c, cmake, comment, hcl, liquid, llvm, ocaml, perl, vim, vue, yaml
 - Updated queries: cmake, elm, fsharp, html, latex, php, vue
 - Updated themes: flexoki, modus operandi, moonfly, nightfly
+- Enhanced Elixir support with ~V live_svelte injection
+- Improved theme loading and generation system
+- Updated to Rust edition 2021
+
+### Fixes
+- Fixed unsafe extern declarations
+- Fixed HTML injections
+- Fixed Elixir keyword handling
+
+### Deprecated
+- Deprecated `with_*` methods in favor of builder pattern
 
 ## [0.3.2] - 2025-05-21
 
