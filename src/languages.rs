@@ -98,7 +98,7 @@ use std::{path::Path, sync::LazyLock};
 use strum::{EnumIter, IntoEnumIterator};
 use tree_sitter_highlight::HighlightConfiguration;
 
-extern "C" {
+unsafe extern "C" {
     #[cfg(feature = "lang-angular")]
     fn tree_sitter_angular() -> *const ();
     #[cfg(feature = "lang-astro")]
