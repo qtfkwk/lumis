@@ -7,6 +7,7 @@
 - Append CSS style rules `transition: background-color .5s`, `width: 100%`, `display: inline-block` to each `<span>` line on `HtmlInline` formatter when `HighlightStyle:Theme`
 
 ### Changed
+- Update CSS files to include new styles for highlighted lines
 - **Breaking** Change `HighlightLines.style` field from `HighlightLinesStyle` to `Option<HighlightLinesStyle>` allowing users to define either style or class for highlighted lines
 
 ## [0.5.0] - 2025-08-07
