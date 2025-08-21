@@ -2,9 +2,12 @@
 
 ## Unreleased
 
+### Added
+- Add common Elixir sigils injections
+
 ### Changed
 - Update tree-sitter-php to v0.24.2
-- Update php queries
+- Update PHP queries
 
 ## [0.7.2] - 2025-08-20
 
