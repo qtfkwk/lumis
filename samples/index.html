@@ -401,8 +401,11 @@
         themeSelect.appendChild(option);
       }
 
-      languageSelect.value = "rust";
-      themeSelect.value = "catppuccin_frappe";
+      const languageKeys = Object.keys(languages);
+      const randomLanguage = languageKeys[Math.floor(Math.random() * languageKeys.length)];
+      const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+      languageSelect.value = randomLanguage;
+      themeSelect.value = randomTheme;
 
       async function loadContent() {
         const language = languageSelect.value;
@@ -436,9 +439,8 @@
         loadContent();
       });
 
-      document.getElementById("language-value").textContent =
-        languageSelect.value;
-      document.getElementById("theme-value").textContent = themeSelect.value;
+      document.getElementById("language-value").textContent = randomLanguage;
+      document.getElementById("theme-value").textContent = randomTheme;
 
       loadContent();
 
