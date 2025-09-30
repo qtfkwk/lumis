@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+- Relax tree-sitter requirement to v0.25
+- Updated languages: latex, markdown, powershell, c_sharp, fsharp, go, make, ocaml, proto, python, scala, zig, css, proto
+
 ## [0.7.3] - 2025-08-20
 
 ### Added
