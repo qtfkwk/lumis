@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Added
+- Add Typst language (@mylanconnolly)
+
 ### Changed
 - Update rustler from 0.36.2 to 0.37.0
 - Update tree-sitter-erlang from 0.14.0 to 0.15.0
