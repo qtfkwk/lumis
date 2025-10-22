@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.7.6] - 2025-10-22
+
+### Fixed
+- High CPU usage in Nix language queries (@DolceTriade)
+- Fix default trait
+
+### Changed
+- Update themes: catppuccin_frappe, catppuccin_latte, catppuccin_macchiato, catppuccin_mocha, matte_black, modus_operandi
+- Update CSS files
+- Update samples
+
 ## [0.7.5] - 2025-10-10
 
 ### Added
