@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.7.7] - 2025-10-27
+
+### Changed
+- Update Python queries from upstream nvim-treesitter (@DolceTriade)
+- Update tree-sitter-vue parser
+- Update tree-sitter-angular parser
+- Update tree-sitter-perl parser
+- Update tree-sitter-dart parser
+
 ## [0.7.6] - 2025-10-22
 
 ### Fixed
