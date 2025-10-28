@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - ".github/workflows/update_langs.yml"
+      - ".github/workflows/update-langs.yml"
 
 jobs:
   generate-matrix:

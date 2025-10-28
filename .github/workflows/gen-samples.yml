@@ -1,19 +1,19 @@
-name: Generate CSS
+name: Generate Samples
 
 on:
   schedule:
-    - cron: "0 22 * * 2"
+    - cron: "0 22 * * 5"
   workflow_run:
-    workflows: [Generate Themes]
+    workflows: [Update Languages, Generate CSS]
     types:
       - completed
   workflow_dispatch:
   push:
     paths:
-      - ".github/workflows/gen_css.yml"
+      - ".github/workflows/gen-samples.yml"
 
 jobs:
-  gen-css:
+  gen-samples:
     runs-on: ubuntu-latest
 
     permissions:
@@ -30,27 +30,21 @@ jobs:
 
       - uses: taiki-e/install-action@just
 
-      - name: Install Neovim
-        run: |
-          sudo add-apt-repository ppa:neovim-ppa/unstable -y
-          sudo apt-get update
-          sudo apt-get install -y lua5.4 neovim
-
-      - name: gen-css
-        run: echo "y" | just gen-css
+      - name: gen-samples
+        run: echo "y" | just gen-samples
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.CI_TOKEN }}
           add-paths: |
-            css
-          commit-message: "chore: generate css"
-          title: "chore: generate css"
+            samples
+          commit-message: "chore: generate samples"
+          title: "chore: generate samples"
           body: |
-            Automated PR to generate css.
+            Automated PR to generate samples.
 
-            This PR was created automatically by the gen-css workflow.
-          branch: gen-css
+            This PR was created automatically by the gen-samples workflow.
+          branch: gen-samples
           delete-branch: true
           base: main

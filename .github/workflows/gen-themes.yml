@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - ".github/workflows/gen_themes.yml"
+      - ".github/workflows/gen-themes.yml"
 
 jobs:
   gen-themes:
