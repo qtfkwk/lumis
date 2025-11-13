@@ -200,7 +200,7 @@ fn list_languages() -> Result<()> {
 fn dump_tree_sitter(path: &str, color: bool) -> Result<()> {
     let bytes = read_or_die(Path::new(&path));
     let source = String::from_utf8_lossy(&bytes).to_string();
-    let language = autumnus::languages::Language::guess(path, &source);
+    let language = autumnus::languages::Language::guess(Some(path), &source);
     let config = language.config();
     let tree = to_tree(&source, &config.language);
     print_tree(&source, &tree, color);
@@ -360,7 +360,7 @@ fn highlight(
     let source = std::str::from_utf8(&bytes)
         .map_err(|e| anyhow::anyhow!("Failed to decode file '{}' as UTF-8: {}", path, e))?;
 
-    let language = autumnus::languages::Language::guess(path, source);
+    let language = autumnus::languages::Language::guess(Some(path), source);
 
     match formatter.unwrap_or_default() {
         Formatter::HtmlInline => {
@@ -504,7 +504,7 @@ impl Display for FileArgument {
     }
 }
 
-/// Parses a highlight_lines string into a vector of RangeInclusive<usize>
+/// Parses a highlight_lines string into a vector of `RangeInclusive<usize>`
 ///
 /// Supports formats like:
 /// - "1" (single line)
@@ -610,11 +610,7 @@ fn highlight_source(
         None
     };
 
-    let lang = if let Some(language) = language {
-        autumnus::languages::Language::guess(language, source)
-    } else {
-        autumnus::languages::Language::guess("", source)
-    };
+    let lang = autumnus::languages::Language::guess(language, source);
 
     match formatter.unwrap_or_default() {
         Formatter::HtmlInline => {
