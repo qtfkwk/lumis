@@ -13,10 +13,11 @@ Autumnus is a syntax highlighter powered by Tree-sitter and Neovim themes. It pr
   - Solarized variants
   - Nord, OneDark, and many more
 - 🌳 Tree-sitter powered syntax highlighting for accurate parsing
-- 📝 Support for 50+ programming languages
+- 📝 Support for 70+ programming languages
 - 🎯 Multiple output formats:
   - HTML with inline styles
   - HTML with linked stylesheets
+  - HTML with multiple themes (light/dark or custom)
   - Terminal output with ANSI colors
 - 🔍 Automatic language detection from file extensions
 - 🚀 Zero configuration needed to get started
@@ -30,7 +31,7 @@ Add Autumnus to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-autumnus = "0.3"
+autumnus = "0.7"
 ```
 
 #### Selective Language Support
@@ -39,7 +40,7 @@ By default, Autumnus includes support for all languages, which can result in lon
 
 ```toml
 [dependencies]
-autumnus = { version = "0.3", default-features = false, features = ["lang-rust", "lang-javascript", "lang-python"] }
+autumnus = { version = "0.7", default-features = false, features = ["lang-rust", "lang-javascript", "lang-python"] }
 ```
 
 Available language features:
@@ -48,6 +49,7 @@ Available language features:
 - `lang-astro` - Astro framework
 - `lang-bash` - Bash/Shell scripts
 - `lang-c` - C programming language
+- `lang-caddy` - Caddy
 - `lang-clojure` - Clojure
 - `lang-cmake` - CMake build files
 - `lang-comment` - Comment highlighting
@@ -65,6 +67,7 @@ Available language features:
 - `lang-elm` - Elm
 - `lang-erb` - ERB templates
 - `lang-erlang` - Erlang
+- `lang-fish` - Fish
 - `lang-fsharp` - F#
 - `lang-gleam` - Gleam
 - `lang-glimmer` - Glimmer/Handlebars
@@ -89,8 +92,10 @@ Available language features:
 - `lang-nix` - Nix
 - `lang-objc` - Objective-C
 - `lang-ocaml` - OCaml
+- `lang-ocamlinterface` - OCaml Interface
 - `lang-perl` - Perl
 - `lang-php` - PHP
+- `lang-plaintext` - Plain Text
 - `lang-powershell` - PowerShell
 - `lang-protobuf` - Protocol Buffers
 - `lang-python` - Python
@@ -107,6 +112,7 @@ Available language features:
 - `lang-toml` - TOML
 - `lang-tsx` - TypeScript JSX
 - `lang-typescript` - TypeScript
+- `lang-typst` - Typst
 - `lang-vim` - Vim script
 - `lang-vue` - Vue.js
 - `lang-xml` - XML
@@ -117,7 +123,7 @@ Or use the convenience feature to enable all languages:
 
 ```toml
 [dependencies]
-autumnus = { version = "0.3", features = ["all-languages"] }
+autumnus = { version = "0.7", features = ["all-languages"] }
 ```
 
 ### As a CLI Tool
