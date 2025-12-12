@@ -382,7 +382,7 @@ pub fn wrap_in_lines(html: &str) -> Vec<String> {
         .map(|(i, line)| {
             let line_number = i + 1;
             format!(
-                "<div class=\"line\" data-line=\"{}\">{}</div>",
+                "<div class=\"line\" data-line=\"{}\">{}\n</div>",
                 line_number, line
             )
         })
