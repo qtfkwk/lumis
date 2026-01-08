@@ -17,6 +17,7 @@
 
 ### Changed
 - Error messages now follow Rust conventions (lowercase, no trailing punctuation)
+- Update langs: lua, vim, caddy, proto
 - **BREAKING**: Remove `Options` struct and `OptionsBuilder` - `highlight()` and `write_highlight()` now take formatters directly
 - **BREAKING**: `highlight()` signature changed from `highlight(source, options)` to `highlight(source, formatter)`
 - **BREAKING**: `write_highlight()` signature changed from `write_highlight(output, source, options)` to `write_highlight(output, source, formatter)`
