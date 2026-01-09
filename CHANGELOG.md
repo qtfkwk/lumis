@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [0.8.0-beta.5] - 2026-01-09
 
 ### Added
 - `Appearance` enum with `Light` and `Dark` variants for type-safe theme appearance handling
