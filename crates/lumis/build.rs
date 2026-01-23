@@ -373,9 +373,7 @@ fn queries() {
         let language = path.file_name().unwrap().to_str().unwrap();
         println!(
             "cargo:rerun-if-changed={}",
-            manifest_dir()
-                .join(format!("queries/{language}"))
-                .display()
+            manifest_dir().join(format!("queries/{language}")).display()
         );
         println!(
             "cargo:rerun-if-changed={}",

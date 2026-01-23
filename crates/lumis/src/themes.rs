@@ -925,12 +925,8 @@ mod tests {
 
     #[test]
     fn test_from_file() {
-        let workspace_root = Path::new(env!("CARGO_MANIFEST_DIR"))
-            .parent()
-            .unwrap()
-            .parent()
-            .unwrap();
-        let path = workspace_root.join("themes/catppuccin_frappe.json");
+        let manifest_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let path = manifest_dir.join("themes/catppuccin_frappe.json");
         let theme = from_file(&path).unwrap();
 
         assert_eq!(theme.name, "catppuccin_frappe");
