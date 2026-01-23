@@ -75,7 +75,7 @@
 //! let theme = themes::from_json(json).unwrap();
 //! ```
 //!
-//! See [custom_theme.rs](https://github.com/leandrocp/autumnus/blob/main/examples/custom_theme.rs)
+//! See [custom_theme.rs](https://github.com/leandrocp/lumis/blob/main/examples/custom_theme.rs)
 //! for a complete example of building themes programmatically.
 
 use serde::{Deserialize, Serialize};
@@ -990,7 +990,7 @@ pre.athl {
     }
 
     // Tests for specialized capture groups (issue #287)
-    // https://github.com/leandrocp/autumnus/issues/287
+    // https://github.com/leandrocp/lumis/issues/287
 
     #[test]
     fn test_get_style_specialized() {

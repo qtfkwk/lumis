@@ -8,7 +8,7 @@
 // - Replaced LossyUtf8 with String::from_utf8_lossy (not exported by tree-sitter)
 // - Uses bool return for progress_callback (tree-sitter 0.25 compatibility)
 //
-// See: https://github.com/leandrocp/autumnus/issues/287
+// See: https://github.com/leandrocp/lumis/issues/287
 
 #![allow(clippy::all)]
 

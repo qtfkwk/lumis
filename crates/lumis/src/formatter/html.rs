@@ -27,7 +27,7 @@
 //!
 //! See also:
 //! - [`Formatter`](crate::formatter::Formatter) trait documentation
-//! - [`examples/custom_html_formatter.rs`](https://github.com/leandrocp/autumnus/blob/main/examples/custom_html_formatter.rs)
+//! - [`examples/custom_html_formatter.rs`](https://github.com/leandrocp/lumis/blob/main/examples/custom_html_formatter.rs)
 
 use crate::languages::Language;
 use crate::themes::Theme;

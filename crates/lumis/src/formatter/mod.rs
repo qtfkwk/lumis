@@ -137,7 +137,7 @@
 //! # Custom Formatters
 //!
 //! You can implement the [`Formatter`] trait to create custom output formats.
-//! See the [examples directory](https://github.com/leandrocp/autumnus/tree/main/examples)
+//! See the [examples directory](https://github.com/leandrocp/lumis/tree/main/examples)
 //! for some custom formatter implementations.
 
 // Originally based on https://github.com/Colonial-Dev/inkjet/tree/da289fa8b68f11dffad176e4b8fabae8d6ac376d/src/formatter
@@ -252,7 +252,7 @@ pub struct HtmlElement {
 ///
 /// - [`highlight`](mod@crate::highlight) module - High-level API for accessing styled tokens
 /// - [`highlight_iter()`](crate::highlight::highlight_iter) - Streaming callback API for styled segments
-/// - [Examples directory](https://github.com/leandrocp/autumnus/tree/main/examples) - Custom formatter implementations
+/// - [Examples directory](https://github.com/leandrocp/lumis/tree/main/examples) - Custom formatter implementations
 pub trait Formatter: Send + Sync {
     /// Format source code with syntax highlighting.
     ///
