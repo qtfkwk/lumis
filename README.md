@@ -123,7 +123,7 @@ Or use the convenience feature to enable all languages:
 
 ```toml
 [dependencies]
-lumis = { version = "0.2", features = ["all-languages"] }
+lumis = { version = "0.1", features = ["all-languages"] }
 ```
 
 ### As a CLI Tool
