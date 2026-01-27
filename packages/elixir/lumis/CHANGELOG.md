@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0 - 2026-01-27
 
 First release of `lumis`, a renamed version of the `autumn` package.
 
