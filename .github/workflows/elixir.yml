@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - "packages/elixir/lumis/**"
+      - ".github/workflows/elixir.yml"
   workflow_dispatch:
 
 defaults:
