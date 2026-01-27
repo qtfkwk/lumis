@@ -71,7 +71,7 @@ checksum = "a23eb6b1614318a8071c9b2521f36b424b2c83db5eb3a0fead4a6c0809af6e61"
 name = "autumnus"
 version = "0.9.0"
 dependencies = [
- "lumis 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "lumis 0.1.0",
 ]
 
 [[package]]
@@ -254,7 +254,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
- "lumis 0.1.0",
+ "lumis 0.1.1",
 ]
 
 [[package]]
@@ -376,13 +376,14 @@ checksum = "df1d3c3b53da64cf5760482273a98e575c651a67eec7f77df96b5b642de8f039"
 [[package]]
 name = "lumis"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3315ef359b1256f3de44ee4fc2965e5b93676195acd2a740ccd94e923a59308b"
 dependencies = [
  "anyhow",
  "cc",
  "clap",
  "derive_builder",
  "glob",
- "pretty_assertions",
  "prettyplease",
  "proc-macro2",
  "quote",
@@ -449,15 +450,14 @@ dependencies = [
 
 [[package]]
 name = "lumis"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3315ef359b1256f3de44ee4fc2965e5b93676195acd2a740ccd94e923a59308b"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "cc",
  "clap",
  "derive_builder",
  "glob",
+ "pretty_assertions",
  "prettyplease",
  "proc-macro2",
  "quote",
