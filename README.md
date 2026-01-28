@@ -52,6 +52,7 @@ lumis highlight src/index.js --theme dracula
 use lumis::{highlight, HtmlInlineBuilder, languages::Language, themes};
 
 let code = "print('Hello')";
+
 let theme = themes::get("dracula").unwrap();
 
 let formatter = HtmlInlineBuilder::new()
