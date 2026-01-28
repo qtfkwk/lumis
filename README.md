@@ -72,11 +72,11 @@ Lumis.highlight!("setTimeout(fun, 5000)", language: "js", formatter: {:html_inli
 
 ## Documentation
 
-| Platform | Install | Docs |
-|----------|---------|------|
-| **CLI** | `cargo install lumis` | `lumis --help` |
-| **Rust** | `cargo add lumis` | [crates/lumis](crates/lumis/README.md) &bull; [docs.rs](https://docs.rs/lumis) |
-| **Elixir** | `{:lumis, "~> 0.1"}` | [packages/elixir](packages/elixir/lumis/README.md) &bull; [hexdocs](https://hexdocs.pm/lumis) |
+| Platform | Install | Package | Docs |
+|----------|---------| ------- | -----|
+| **CLI** | `cargo install lumis` | - | `lumis --help` |
+| **Rust** | `cargo add lumis` | [crates.io/lumis](https://crates.io/crates/lumis) | [README.md](crates/lumis/README.md) &bull; [docs.rs](https://docs.rs/lumis) |
+| **Elixir** | `{:lumis, "~> 0.1"}` | [hex.pm/lumis](https://hex.pm/packages/lumis) | [README.md](packages/elixir/lumis/README.md) &bull; [hexdocs](https://hexdocs.pm/lumis) |
 
 ## Contributing
 
