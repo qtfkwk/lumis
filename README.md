@@ -5,6 +5,10 @@
 </p>
 
 <p align="center">
+  <strong>70+ languages. 120+ themes. One API.</strong>
+</p>
+
+<p align="center">
   <a href="https://lumis.sh">lumis.sh</a>
 </p>
 
@@ -15,8 +19,6 @@
 </p>
 
 ---
-
-**70+ languages. 120+ themes. One API.**
 
 ## Features
 
