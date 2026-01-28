@@ -1,7 +1,7 @@
 <h1 align="center">Lumis</h1>
 
 <p align="center">
-  <strong>Syntax highlighting powered by Tree-sitter and Neovim themes</strong>
+  <strong>Syntax Highlighter powered by Tree-sitter and Neovim themes</strong>
 </p>
 
 <p align="center">
