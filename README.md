@@ -22,8 +22,8 @@
 
 ## Features
 
-- **Tree-sitter parsing** - Fast and accurate syntax parsing for 70+ languages
-- **120+ Neovim themes** - Updated and curated 100+ themes from the Neovim community
+- **70+ Tree-sitter languages** - Fast and accurate syntax parsing
+- **120+ Neovim themes** - Updated and curated themes from the Neovim community
 - **Multiple outputs** - HTML (inline/linked), Terminal (ANSI), multi-theme (light/dark), and custom formatters
 - **Language auto-detection** - File extension and shebang support
 - **Streaming-friendly** - Handles incomplete code gracefully
