@@ -18,7 +18,14 @@
 
 **70+ languages. 120+ themes. One API.**
 
-Lumis gives you accurate, beautiful syntax highlighting using the same Tree-sitter parsers and Neovim colorschemes developers love. Use it from the CLI, Rust, or Elixir.
+## Features
+
+- **Tree-sitter parsing** - Fast and accurate syntax parsing for 70+ languages
+- **120+ Neovim themes** - Updated and curated 100+ themes from the Neovim community
+- **Multiple outputs** - HTML (inline/linked), Terminal (ANSI), multi-theme (light/dark), and custom formatters
+- **Language auto-detection** - File extension and shebang support
+- **Streaming-friendly** - Handles incomplete code gracefully
+- **Zero config** - Works out of the box
 
 <table>
 <tr>
@@ -60,26 +67,22 @@ let html = highlight(code, formatter);
 Lumis.highlight!("setTimeout(fun, 5000)", language: "js", formatter: {:html_inline, theme: "dracula"})
 ```
 
-## Features
-
-- **Tree-sitter parsing** - Fast and accurate syntax parsing for 70+ languages
-- **120+ Neovim themes** - Updated and curated 100+ themes from the Neovim community
-- **Multiple outputs** - HTML (inline/linked), Terminal (ANSI), multi-theme (light/dark), and custom formatters
-- **Language auto-detection** - File extension and shebang support
-- **Streaming-friendly** - Handles incomplete code gracefully
-- **Zero config** - Works out of the box
-
 ## Documentation
 
 | Platform | Install | Docs |
 |----------|---------|------|
-| **CLI** | `cargo install lumis` | [Usage](#cli-usage) |
+| **CLI** | `cargo install lumis` | `lumis --help` |
 | **Rust** | `cargo add lumis` | [crates/lumis](crates/lumis/README.md) &bull; [docs.rs](https://docs.rs/lumis) |
 | **Elixir** | `{:lumis, "~> 0.1"}` | [packages/elixir](packages/elixir/lumis/README.md) &bull; [hexdocs](https://hexdocs.pm/lumis) |
 
 ## Contributing
 
 Contributions welcome! Feel free to open issues or PRs for bugs, features, new themes, or language support.
+
+## Acknowledgements
+* [Makeup](https://hex.pm/packages/makeup) for setting up the baseline for the Elixir package
+* [Inkjet](https://crates.io/crates/inkjet) for the Rust implementation in the initial versions
+* [Shiki](https://shiki.style) and [syntect](https://crates.io/crates/syntect) for providing awesome syntax highlighting
 
 ## License
 
