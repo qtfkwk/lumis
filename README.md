@@ -73,7 +73,7 @@ Lumis.highlight!("setTimeout(fun, 5000)", language: "js", formatter: {:html_inli
 
 ### [Java](https://github.com/roastedroot/lumis4j)
 
-Project by [@andreaTP](https://github.com/andreaTP)
+Project by [@andreaTP](https://github.com/andreaTP). More details at https://chicory.dev/blog/syntax-highlight
 
 ```java
 import io.roastedroot.lumis4j.core.Lumis;
