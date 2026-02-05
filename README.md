@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <strong>70+ languages. 120+ themes. One API.</strong>
+  <strong>70+ languages. 120+ themes. 4 platforms. One API.</strong>
 </p>
 
 <p align="center">
@@ -70,6 +70,24 @@ let html = highlight(code, formatter);
 Lumis.highlight!("setTimeout(fun, 5000)", language: "js", formatter: {:html_inline, theme: "dracula"})
 ```
 
+### [Java](https://github.com/roastedroot/lumis4j)
+
+Project by [@andreaTP](https://github.com/andreaTP)
+
+```java
+import io.roastedroot.lumis4j.core.Lumis;
+import io.roastedroot.lumis4j.core.Lang;
+import io.roastedroot.lumis4j.core.Theme;
+
+var lumis = Lumis.builder()
+    .withLang(Lang.JAVASCRIPT)
+    .withTheme(Theme.DRACULA)
+    .build();
+
+var result = lumis.highlight("console.log('Hello, World!');");
+System.out.println(result.string());
+```
+
 ## Documentation
 
 | Platform | Install | Package | Docs |
@@ -77,6 +95,7 @@ Lumis.highlight!("setTimeout(fun, 5000)", language: "js", formatter: {:html_inli
 | **CLI** | `cargo install lumis` | - | `lumis --help` |
 | **Rust** | `cargo add lumis` | [crates.io/lumis](https://crates.io/crates/lumis) | [README.md](crates/lumis/README.md) &bull; [docs.rs](https://docs.rs/lumis) |
 | **Elixir** | `{:lumis, "~> 0.1"}` | [hex.pm/lumis](https://hex.pm/packages/lumis) | [README.md](packages/elixir/lumis/README.md) &bull; [hexdocs](https://hexdocs.pm/lumis) |
+| **Java** | `io.roastedroot:lumis4j:latest` | - | - |
 
 ## Contributing
 
