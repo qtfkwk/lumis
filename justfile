@@ -386,23 +386,6 @@ sync-css:
     cp css/*.css crates/lumis/css/
     cp css/*.css packages/elixir/lumis/priv/static/css/
 
-# Generate HTML sample files for the website
-gen-samples:
-    #!/usr/bin/env bash
-    set -euo pipefail
-
-    echo "⚠️  This will regenerate files in the samples/ directory."
-    echo ""
-    read -p "Are you sure you want to proceed? (y/N) " -n 1 -r
-    echo ""
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        echo "Operation cancelled."
-        exit 0
-    fi
-
-    find samples -type f -name "*.html" ! -name "index.html" ! -name "html.html" -delete
-    cargo run -p dev --release gen-samples
-
 # Generate documentation for both Rust and Elixir
 docs:
     #!/usr/bin/env bash
@@ -410,8 +393,6 @@ docs:
     cargo doc --all-features --no-deps
     (cd packages/elixir/lumis && LUMIS_BUILD=1 mix docs)
 
-# Start local dev server for samples
+# Start local dev server
 dev-server:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    (cd samples && npx http-server . -p 8000 --ext-fallback)
+    cargo run -p lumis-sh
