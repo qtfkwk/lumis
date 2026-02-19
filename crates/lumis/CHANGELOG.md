@@ -1,9 +1,10 @@
 # Changelog
 
-## Unreleased
+## 0.1.2 - 2026-01-27
 
 ### Changed
 
+- Add language nushell (started by @c4lliope)
 - Rename CSS class from `athl` to `lumis` for consistency with the project name
 - Rename CSS class from `athl-themes` to `lumis-themes` for multi-theme formatter
 - Change default CSS variable prefix from `--athl` to `--lumis`

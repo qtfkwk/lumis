@@ -1,6 +1,6 @@
 [package]
 name = "lumis"
-version = "0.1.1"
+version = "0.1.2"
 homepage = "https://lumis.sh"
 repository.workspace = true
 authors.workspace = true
