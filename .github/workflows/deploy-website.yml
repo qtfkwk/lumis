@@ -1,0 +1,21 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "crates/lumis-sh/**"
+      - "Dockerfile"
+      - ".github/workflows/deploy-website.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency: deploy-website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
