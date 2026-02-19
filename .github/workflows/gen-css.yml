@@ -9,6 +9,8 @@ on:
       - completed
   workflow_dispatch:
   push:
+    tags-ignore:
+      - "**"
     paths:
       - ".github/workflows/gen-css.yml"
 
