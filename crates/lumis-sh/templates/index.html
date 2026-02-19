@@ -29,8 +29,8 @@
             },
             keyframes: {
               fadeIn: {
-                "0%": { opacity: "0", transform: "translateY(10px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
               },
             },
             animation: {
@@ -70,7 +70,7 @@
   <body class="min-h-screen">
     <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <div
-        class="rounded-xl border border-orange-100 bg-white/90 backdrop-blur-sm shadow-lg animate-fadeIn"
+        class="rounded-xl border border-orange-100 bg-white/90 backdrop-blur-sm shadow-lg"
       >
         <div class="p-6 sm:p-8">
           <div class="mb-8">
@@ -91,6 +91,35 @@
               </div>
               <div class="flex flex-col gap-6">
                 <div class="flex flex-col sm:flex-row gap-4 text-xs">
+                  <div
+                    class="flex-1 flex flex-col gap-2 p-2.5 rounded-lg bg-gradient-to-r from-amber-50 to-orange-50"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span class="font-semibold text-amber-800">CLI</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <a
+                        href="https://github.com/leandrocp/lumis"
+                        class="text-amber-700 hover:text-amber-900 inline-flex items-center gap-1.5 transition-colors"
+                        target="_blank"
+                      >
+                        <svg
+                          class="w-4 h-4"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                          />
+                        </svg>
+                        <span
+                          class="hover:underline decoration-2 underline-offset-2"
+                          >GitHub</span
+                        >
+                      </a>
+                    </div>
+                  </div>
+
                   <div
                     class="flex-1 flex flex-col gap-2 p-2.5 rounded-lg bg-gradient-to-r from-amber-50 to-orange-50"
                   >
@@ -186,6 +215,57 @@
                       </a>
                     </div>
                   </div>
+
+                  <div
+                    class="flex-1 flex flex-col gap-2 p-2.5 rounded-lg bg-gradient-to-r from-amber-50 to-orange-50"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span class="font-semibold text-amber-800">Java</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <a
+                        href="https://github.com/roastedroot/lumis4j"
+                        class="text-amber-700 hover:text-amber-900 inline-flex items-center gap-1.5 transition-colors"
+                        target="_blank"
+                      >
+                        <svg
+                          class="w-4 h-4"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                          />
+                        </svg>
+                        <span
+                          class="hover:underline decoration-2 underline-offset-2"
+                          >GitHub</span
+                        >
+                      </a>
+                      <a
+                        href="https://chicory.dev/blog/syntax-highlight"
+                        class="text-amber-700 hover:text-amber-900 inline-flex items-center gap-1.5 transition-colors"
+                        target="_blank"
+                      >
+                        <svg
+                          class="w-4 h-4"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                        <span
+                          class="hover:underline decoration-2 underline-offset-2"
+                          >Blog</span
+                        >
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -235,7 +315,7 @@
           </div>
 
           <div class="mt-8">
-            <div id="content" class="animate-fadeIn text-code">{{ highlighted_html|safe }}</div>
+            <div id="content" class="text-code">{{ highlighted_html|safe }}</div>
           </div>
         </div>
       </div>
