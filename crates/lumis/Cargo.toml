@@ -2,14 +2,14 @@
 name = "lumis"
 version = "0.1.2"
 homepage = "https://lumis.sh"
-repository.workspace = true
-authors.workspace = true
-edition.workspace = true
-rust-version.workspace = true
+repository = "https://github.com/leandrocp/lumis"
+authors = ["Leandro Pereira <leandro@leandro.io>"]
+edition = "2021"
+rust-version = "1.91"
+license = "MIT"
 description = "Syntax highlighter powered by Tree-sitter and Neovim themes."
 keywords = ["syntax", "highlighting", "highlighter", "colouring", "tree-sitter"]
 categories = ["text-processing"]
-license.workspace = true
 include = [
     "/build.rs",
     "/src/",
