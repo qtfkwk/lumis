@@ -272,6 +272,11 @@ update-queries query_name="":
     # https://github.com/leandrocp/lumis/pull/200
     special_repos["python"]="https://github.com/tree-sitter/tree-sitter-python.git master"
 
+    # Languages with manually maintained queries
+    declare -A skip_langs
+    # wat: nvim-treesitter has no queries, helix uses incompatible capture names
+    skip_langs["wat"]=1
+
     if [[ -n "{{query_name}}" ]]; then
         LANGUAGES="{{query_name}}"
     else
@@ -280,6 +285,10 @@ update-queries query_name="":
 
     for LANG in $LANGUAGES; do
         DEST_DIR="crates/lumis/queries/$LANG"
+
+        if [[ -n "${skip_langs[$LANG]:-}" ]]; then
+            continue
+        fi
 
         if [[ -n "${special_repos[$LANG]:-}" ]]; then
             IFS=' ' read -r repo branch <<< "${special_repos[$LANG]}"
