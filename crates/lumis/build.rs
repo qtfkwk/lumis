@@ -228,6 +228,13 @@ fn vendored_parsers() {
         extra_files: vec!["scanner.c"],
     });
 
+    #[cfg(feature = "lang-nushell")]
+    parsers.push(TreeSitterParser {
+        name: "tree-sitter-nu",
+        src_dir: "vendored_parsers/tree-sitter-nu/src",
+        extra_files: vec!["scanner.c"],
+    });
+
     #[cfg(feature = "lang-perl")]
     parsers.push(TreeSitterParser {
         name: "tree-sitter-perl",
@@ -268,6 +275,13 @@ fn vendored_parsers() {
         name: "tree-sitter-vue",
         src_dir: "vendored_parsers/tree-sitter-vue/src",
         extra_files: vec!["scanner.c"],
+    });
+
+    #[cfg(feature = "lang-wat")]
+    parsers.push(TreeSitterParser {
+        name: "tree-sitter-wat",
+        src_dir: "vendored_parsers/tree-sitter-wat/src",
+        extra_files: vec![],
     });
 
     for parser in &parsers {
@@ -436,6 +450,7 @@ fn queries() {
             "lua" => cfg!(feature = "lang-lua"),
             "make" => cfg!(feature = "lang-make"),
             "nix" => cfg!(feature = "lang-nix"),
+            "nu" => cfg!(feature = "lang-nushell"),
             "objc" => cfg!(feature = "lang-objc"),
             "perl" => cfg!(feature = "lang-perl"),
             "php" => cfg!(feature = "lang-php"),
@@ -456,6 +471,7 @@ fn queries() {
             "typst" => cfg!(feature = "lang-typst"),
             "vim" => cfg!(feature = "lang-vim"),
             "vue" => cfg!(feature = "lang-vue"),
+            "wat" => cfg!(feature = "lang-wat"),
             "xml" => cfg!(feature = "lang-xml"),
             "yaml" => cfg!(feature = "lang-yaml"),
             "zig" => cfg!(feature = "lang-zig"),

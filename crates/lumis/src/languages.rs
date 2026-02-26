@@ -147,10 +147,14 @@ unsafe extern "C" {
     fn tree_sitter_surface() -> *const ();
     #[cfg(feature = "lang-typst")]
     fn tree_sitter_typst() -> *const ();
+    #[cfg(feature = "lang-nushell")]
+    fn tree_sitter_nu() -> *const ();
     #[cfg(feature = "lang-vim")]
     fn tree_sitter_vim() -> *const ();
     #[cfg(feature = "lang-vue")]
     fn tree_sitter_vue() -> *const ();
+    #[cfg(feature = "lang-wat")]
+    fn tree_sitter_wat() -> *const ();
 }
 
 include!(concat!(env!("OUT_DIR"), "/queries_constants.rs"));
@@ -248,6 +252,8 @@ pub enum Language {
     MarkdownInline,
     #[cfg(feature = "lang-nix")]
     Nix,
+    #[cfg(feature = "lang-nushell")]
+    Nushell,
     #[cfg(feature = "lang-ocaml")]
     OCaml,
     #[cfg(feature = "lang-ocaml")]
@@ -298,6 +304,8 @@ pub enum Language {
     Vim,
     #[cfg(feature = "lang-vue")]
     Vue,
+    #[cfg(feature = "lang-wat")]
+    Wat,
     #[cfg(feature = "lang-xml")]
     XML,
     #[cfg(feature = "lang-yaml")]
@@ -479,6 +487,8 @@ impl std::str::FromStr for Language {
             "markdown_inline" => Some(Language::MarkdownInline),
             #[cfg(feature = "lang-nix")]
             "nix" => Some(Language::Nix),
+            #[cfg(feature = "lang-nushell")]
+            "nushell" | "nu" => Some(Language::Nushell),
             #[cfg(feature = "lang-php")]
             "php" => Some(Language::Php),
             #[cfg(feature = "lang-powershell")]
@@ -519,6 +529,8 @@ impl std::str::FromStr for Language {
             "vim" | "viml" | "vimscript" => Some(Language::Vim),
             #[cfg(feature = "lang-vue")]
             "vue" => Some(Language::Vue),
+            #[cfg(feature = "lang-wat")]
+            "wat" | "wasm" | "webassembly" => Some(Language::Wat),
             #[cfg(feature = "lang-xml")]
             "xml" => Some(Language::XML),
             #[cfg(feature = "lang-yaml")]
@@ -871,6 +883,8 @@ impl Language {
             Language::MarkdownInline => &[],
             #[cfg(feature = "lang-nix")]
             Language::Nix => &["*.nix"],
+            #[cfg(feature = "lang-nushell")]
+            Language::Nushell => &["*.nu"],
             #[cfg(feature = "lang-objc")]
             Language::ObjC => &["*.m", "*.objc"],
             #[cfg(feature = "lang-ocaml")]
@@ -937,6 +951,8 @@ impl Language {
             Language::Vim => &["*.vim", "*.viml"],
             #[cfg(feature = "lang-vue")]
             Language::Vue => &["*.vue"],
+            #[cfg(feature = "lang-wat")]
+            Language::Wat => &["*.wat"],
             #[cfg(feature = "lang-xml")]
             Language::XML => &[
                 "*.ant",
@@ -1111,6 +1127,8 @@ impl Language {
                         "ruby" | "macruby" | "rake" | "jruby" | "rbx" => {
                             return Some(Language::Ruby);
                         }
+                        #[cfg(feature = "lang-nushell")]
+                        "nu" => return Some(Language::Nushell),
                         #[cfg(feature = "lang-swift")]
                         "swift" => return Some(Language::Swift),
                         #[cfg(feature = "lang-c")]
@@ -1249,6 +1267,8 @@ impl Language {
             Language::MarkdownInline => "Markdown Inline",
             #[cfg(feature = "lang-nix")]
             Language::Nix => "Nix",
+            #[cfg(feature = "lang-nushell")]
+            Language::Nushell => "Nushell",
             #[cfg(feature = "lang-perl")]
             Language::Perl => "Perl",
             #[cfg(feature = "lang-php")]
@@ -1292,6 +1312,8 @@ impl Language {
             Language::Vim => "Vim",
             #[cfg(feature = "lang-vue")]
             Language::Vue => "Vue",
+            #[cfg(feature = "lang-wat")]
+            Language::Wat => "WAT",
             #[cfg(feature = "lang-xml")]
             Language::XML => "XML",
             #[cfg(feature = "lang-yaml")]
@@ -1404,6 +1426,8 @@ impl Language {
             Language::MarkdownInline => &MARKDOWN_INLINE_CONFIG,
             #[cfg(feature = "lang-nix")]
             Language::Nix => &NIX_CONFIG,
+            #[cfg(feature = "lang-nushell")]
+            Language::Nushell => &NUSHELL_CONFIG,
             #[cfg(feature = "lang-perl")]
             Language::Perl => &PERL_CONFIG,
             #[cfg(feature = "lang-php")]
@@ -1446,6 +1470,8 @@ impl Language {
             Language::Vim => &VIM_CONFIG,
             #[cfg(feature = "lang-vue")]
             Language::Vue => &VUE_CONFIG,
+            #[cfg(feature = "lang-wat")]
+            Language::Wat => &WAT_CONFIG,
             #[cfg(feature = "lang-xml")]
             Language::XML => &XML_CONFIG,
             #[cfg(feature = "lang-yaml")]
@@ -2289,6 +2315,22 @@ static NIX_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
     config
 });
 
+#[cfg(feature = "lang-nushell")]
+static NUSHELL_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
+    let language_fn = unsafe { tree_sitter_language::LanguageFn::from_raw(tree_sitter_nu) };
+
+    let mut config = HighlightConfiguration::new(
+        tree_sitter::Language::new(language_fn),
+        "nu",
+        NU_HIGHLIGHTS,
+        NU_INJECTIONS,
+        NU_LOCALS,
+    )
+    .expect("failed to create nushell highlight configuration");
+    config.configure(&HIGHLIGHT_NAMES);
+    config
+});
+
 #[cfg(feature = "lang-perl")]
 static PERL_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
     let language_fn = unsafe { tree_sitter_language::LanguageFn::from_raw(tree_sitter_perl) };
@@ -2604,6 +2646,22 @@ static VUE_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
         VUE_LOCALS,
     )
     .expect("failed to create vue highlight configuration");
+    config.configure(&HIGHLIGHT_NAMES);
+    config
+});
+
+#[cfg(feature = "lang-wat")]
+static WAT_CONFIG: LazyLock<HighlightConfiguration> = LazyLock::new(|| {
+    let language_fn = unsafe { tree_sitter_language::LanguageFn::from_raw(tree_sitter_wat) };
+
+    let mut config = HighlightConfiguration::new(
+        tree_sitter::Language::new(language_fn),
+        "wat",
+        WAT_HIGHLIGHTS,
+        WAT_INJECTIONS,
+        WAT_LOCALS,
+    )
+    .expect("failed to create wat highlight configuration");
     config.configure(&HIGHLIGHT_NAMES);
     config
 });
@@ -3253,6 +3311,19 @@ mod tests {
         let lang = Language::Nix;
         let config = lang.config();
         assert_eq!(lang.name(), "Nix");
+
+        let mut highlighter = Highlighter::new();
+        let _ = highlighter
+            .highlight(config, "".as_bytes(), None, |_| None)
+            .unwrap();
+    }
+
+    #[test]
+    #[cfg(feature = "lang-nushell")]
+    fn test_nushell_config_loads() {
+        let lang = Language::Nushell;
+        let config = lang.config();
+        assert_eq!(lang.name(), "Nushell");
 
         let mut highlighter = Highlighter::new();
         let _ = highlighter
